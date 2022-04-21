@@ -62,8 +62,7 @@ const Search = () => {
                     <Button fullWidth onClick={() => getData(URL)} variant="contained" size="medium" >View commits</Button>
                 </Grid>
                     <Grid item xs={12} md={12} lg={12}>
-                    <div style = {{overflow: 'auto', width: '100%'}}>
-                        <Timeline position="alternate">
+                        <Timeline position="alternate" style = {{overflow: 'auto', width: '100%'}}>
                             {isArray(sha) && sha.map(item => (
                                     <TimelineItem>
                                         <TimelineOppositeContent
@@ -93,7 +92,7 @@ const Search = () => {
                                     </TimelineItem>
                             ))}
                         </Timeline>
-                        </div>
+
                     </Grid>
                 
             </Grid>
