@@ -61,38 +61,40 @@ const Search = () => {
                 <Grid item xs={12} md={6} lg={2}>
                     <Button fullWidth onClick={() => getData(URL)} variant="contained" size="medium" >View commits</Button>
                 </Grid>
-                <Grid item xs={12} md={12} lg={12}>
-                    <Timeline position="alternate">
-                        {isArray(sha) && sha.map(item => (
-                                <TimelineItem>
-                                    <TimelineOppositeContent
-                                    sx={{ m: 'auto 0' }}
-                                    align="right"
-                                    variant="body2"
-                                    color="text.secondary"
-                                    >
-                                    {item.commit.author.date}
-                                    </TimelineOppositeContent>
-                                    <TimelineSeparator>
-                                        <TimelineConnector />
-                                            <TimelineDot>
-                                                <Avatar alt="User" src={item.author.avatar_url} />
-                                            </TimelineDot>
-                                        <TimelineConnector />
-                                    </TimelineSeparator>
-                                    <TimelineContent sx={{ py: '12px', px: 2 }}>
-                                        <Typography variant="h6" component="span">
-                                            {item.commit.message.substring(0, 140)}
-                                        </Typography>
-                                        <Typography variant="h6" component="span">
-                                            <br></br><Link target="_blank" underline="none" href={item.author.html_url}>{item.author.login}</Link>
-                                        </Typography>
-                                        
-                                    </TimelineContent>
-                                </TimelineItem>
-                        ))}
-                    </Timeline>
-                </Grid>
+                <div style = {{overflow: 'auto', width: '100%'}}>
+                    <Grid item xs={12} md={12} lg={12}>
+                        <Timeline position="alternate">
+                            {isArray(sha) && sha.map(item => (
+                                    <TimelineItem>
+                                        <TimelineOppositeContent
+                                        sx={{ m: 'auto 0' }}
+                                        align="right"
+                                        variant="body2"
+                                        color="text.secondary"
+                                        >
+                                        {item.commit.author.date}
+                                        </TimelineOppositeContent>
+                                        <TimelineSeparator>
+                                            <TimelineConnector />
+                                                <TimelineDot>
+                                                    <Avatar alt="User" src={item.author.avatar_url} />
+                                                </TimelineDot>
+                                            <TimelineConnector />
+                                        </TimelineSeparator>
+                                        <TimelineContent sx={{ py: '12px', px: 2 }}>
+                                            <Typography variant="h6" component="span">
+                                                {item.commit.message.substring(0, 140)}
+                                            </Typography>
+                                            <Typography variant="h6" component="span">
+                                                <br></br><Link target="_blank" underline="none" href={item.author.html_url}>{item.author.login}</Link>
+                                            </Typography>
+                                            
+                                        </TimelineContent>
+                                    </TimelineItem>
+                            ))}
+                        </Timeline>
+                    </Grid>
+                </div>
                 
             </Grid>
 
