@@ -61,8 +61,8 @@ const Search = () => {
                 <Grid item xs={12} md={6} lg={2}>
                     <Button fullWidth onClick={() => getData(URL)} variant="contained" size="medium" >View commits</Button>
                 </Grid>
-                <div style = {{overflow: 'auto', width: '100%'}}>
                     <Grid item xs={12} md={12} lg={12}>
+                    <div style = {{overflow: 'auto', width: '100%'}}>
                         <Timeline position="alternate">
                             {isArray(sha) && sha.map(item => (
                                     <TimelineItem>
@@ -82,10 +82,10 @@ const Search = () => {
                                             <TimelineConnector />
                                         </TimelineSeparator>
                                         <TimelineContent sx={{ py: '12px', px: 2 }}>
-                                            <Typography variant="h6" component="span">
+                                            <Typography variant="subtitle1" component="span">
                                                 {item.commit.message.substring(0, 140)}
                                             </Typography>
-                                            <Typography variant="h6" component="span">
+                                            <Typography variant="subtitle2" component="span">
                                                 <br></br><Link target="_blank" underline="none" href={item.author.html_url}>{item.author.login}</Link>
                                             </Typography>
                                             
@@ -93,8 +93,8 @@ const Search = () => {
                                     </TimelineItem>
                             ))}
                         </Timeline>
+                        </div>
                     </Grid>
-                </div>
                 
             </Grid>
 
