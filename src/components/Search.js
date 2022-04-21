@@ -26,10 +26,12 @@ const Search = () => {
     const [error,setError] = useState([]);
     const [URL, setURL]= useState('https://api.github.com/repos/');
     const [state, setState]= useState({
-        profile: '',
-        repository: '' 
+        profile: 'john024x',
+        repository: 'GithubCommits' 
     })
-
+    useEffect(() => {
+        getData(URL)
+    } , [])
     const getValues = e => {
         setState({...state, [e.target.name] : e.target.value })
     }
@@ -37,7 +39,7 @@ const Search = () => {
     function getData(url) {
                     
         axios.get(`${url}${state.profile}/${state.repository}/commits`)
-        // axios.get(`https://api.github.com/repos/facebook/react/commits`)
+        // axios.get(`https://api.github.com/repos/john024x/GithubCommits/commits`)
         .then(res => {
             setSha(res.data);
             console.log(res.data[0])
@@ -51,10 +53,10 @@ const Search = () => {
         <section style={{ margin: '20px' }}>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={6} lg={5}>
-                    <TextField fullWidth onChange={(e) => getValues(e)} id="profile" name="profile" label="Github profile" variant="outlined" size="small" style={{ marginRight: '20px' }}/>
+                    <TextField fullWidth onChange={(e) => getValues(e)} id="profile" value={state.profile} name="profile" label="Github profile" variant="outlined" size="small" style={{ marginRight: '20px' }}/>
                 </Grid>
                 <Grid item xs={12} md={6} lg={5}>
-                    <TextField fullWidth onChange={(e) => getValues(e)} id="repository" name="repository" label="Repository" variant="outlined" size="small" style={{ marginRight: '20px' }}/>
+                    <TextField fullWidth onChange={(e) => getValues(e)} id="repository" value={state.repository} name="repository" label="Repository" variant="outlined" size="small" style={{ marginRight: '20px' }}/>
                 </Grid >
                 <Grid item xs={12} md={6} lg={2}>
                     <Button fullWidth onClick={() => getData(URL)} variant="contained" size="medium" >View commits</Button>
@@ -82,7 +84,10 @@ const Search = () => {
                                         <Typography variant="h6" component="span">
                                             {item.commit.message.substring(0, 140)}
                                         </Typography>
-                                            <Link target="_blank" underline="none" href={item.author.html_url}>{item.author.login}</Link>
+                                        <Typography variant="h6" component="span">
+                                            <br></br><Link target="_blank" underline="none" href={item.author.html_url}>{item.author.login}</Link>
+                                        </Typography>
+                                        
                                     </TimelineContent>
                                 </TimelineItem>
                         ))}
