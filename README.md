@@ -1,5 +1,5 @@
 ###View webpage on juanfuentes.site
-- You can visit [juanfuentes.site[1]][123] for a production build!
+- You can visit http://juanfuentes.site for a production build!
 
 ### How to install on your computer
 
@@ -17,4 +17,3 @@
 *If you want a production build you can run `yarn build` for a production optimized version*
 
 > If you want to check out other projects, you can change the Gihub username and the repository in their respective inputs, then search pressing the button "view commits"
-[123]: http://juanfuentes.site "Juan Fuentes"
